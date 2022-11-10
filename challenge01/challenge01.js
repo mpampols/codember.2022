@@ -7,15 +7,18 @@ fs.readFile("users.txt", "utf8", (err, data) => {
   }
 
   var users = data.split("\n\n");
-  var correctUsers = 0;
-  var lastCheckedUser = "";
+  var validUsers = 0;
+  var lastValidUser = "";
+
   const fields = ["usr:", "eme:", "psw:", "age:", "loc:", "fll:"];
+
   users.forEach((user) => {
     if (fields.every((field) => user.includes(field))) {
-      correctUsers++;
-      lastCheckedUser = user;
+      validUsers++;
+      lastValidUser = user;
     }
   });
-  console.log(correctUsers);
-  console.log(lastCheckedUser);
+
+  console.log("Valid users: " + validUsers);
+  console.log("Last valid user: " + lastValidUser);
 });
